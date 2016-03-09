@@ -36,9 +36,9 @@ public class ProvisionningService {
                 {
                     userDtoOpenAm = userDto;
                 }
-
+                gruCustomer = createCustomerByGuid(strGuidFromTicket);
                 //create customer
-                gruCustomer = CustomerService.instance(  ).createCustomer( buildCustomer( userDto, strGuidFromTicket ) );
+              //  gruCustomer = CustomerService.instance(  ).createCustomer( buildCustomer( userDto, strGuidFromTicket ) );
                 AppLogService.info( "New user created the guid : <" + strGuidFromTicket + "> its customer id is : <" +
                     gruCustomer.getId(  ) + ">" );
             }
@@ -53,7 +53,8 @@ public class ProvisionningService {
                 if ( StringUtils.isNumeric( strCidFromTicket ) )
                 {
                     // CASE : cid but no guid:  find customer info in GRU database => try to retrieve guid from customer
-                    gruCustomer = CustomerService.instance(  ).getCustomerByCid( strCidFromTicket );
+                   // gruCustomer = CustomerService.instance(  ).getCustomerByCid( strCidFromTicket );
+                    gruCustomer =getCustomerByCuid(strCidFromTicket);
                 }
                 else
                 {
