@@ -13,7 +13,63 @@ public class ProvisionningService {
 
 	
 	
-	
+	public static Customer processGuidCuidTicketing(String strGuidFromTicket, String strCidFromTicket, UserDTO userDto)
+        {
+            
+             fr.paris.lutece.plugins.costumerprovisionning.business.UserDTO userDtoOpenAm=null; 
+             fr.paris.lutece.plugins.gru.business.customer.Customer gruCustomer = null;
+        
+             
+             if ( StringUtils.isEmpty( strCidFromTicket ) )
+        {
+            if ( !StringUtils.isEmpty( strGuidFromTicket ) )
+            {
+                //if guid is provided => we try to retrieve linked customer
+                gruCustomer = getCustomerByGuid( strGuidFromTicket );
+                userDtoOpenAm = UserInfoService.instance(  ).getUserInfo( strGuidFromTicket );
+            }
+
+            if ( gruCustomer == null )
+            {
+                //customer is unknown / not found => we create it
+                if ( userDtoOpenAm == null )
+                {
+                    userDtoOpenAm = userDto;
+                }
+
+                //create customer
+                gruCustomer = CustomerService.instance(  ).createCustomer( buildCustomer( userDto, strGuidFromTicket ) );
+                AppLogService.info( "New user created the guid : <" + strGuidFromTicket + "> its customer id is : <" +
+                    gruCustomer.getId(  ) + ">" );
+            }
+
+            //update CID
+//            ticket.setCustomerId( String.valueOf( gruCustomer.getId(  ) ) );
+//            TicketHome.update( ticket );
+        }  else
+        {
+            if ( StringUtils.isEmpty( strGuidFromTicket ) )
+            {
+                if ( StringUtils.isNumeric( strCidFromTicket ) )
+                {
+                    // CASE : cid but no guid:  find customer info in GRU database => try to retrieve guid from customer
+                    gruCustomer = CustomerService.instance(  ).getCustomerByCid( strCidFromTicket );
+                }
+                else
+                {
+                    AppLogService.error( "Provided customerId is not numeric: <" + strCidFromTicket + ">" );
+                }
+
+                if ( gruCustomer == null )
+                {
+                     AppLogService.info( "No guid found for user cid : <" + strCidFromTicket + ">" );
+                }
+              
+            }
+        }
+          
+            return gruCustomer;
+        }
 	public static Customer processGuidCuid(String strGuid, String strCuid)
 	{
 		
