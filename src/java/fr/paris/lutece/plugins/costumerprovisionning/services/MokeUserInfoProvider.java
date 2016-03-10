@@ -53,6 +53,3 @@ public class MokeUserInfoProvider implements IUserInfoProvider
         return user;
     }
 }
-
-
-

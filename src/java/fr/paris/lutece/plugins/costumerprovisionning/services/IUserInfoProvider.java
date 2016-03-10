@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.costumerprovisionning.services;
 
 import fr.paris.lutece.plugins.costumerprovisionning.business.UserDTO;
 
+
 /**
  * IUserInfoProvider Interface
  */
