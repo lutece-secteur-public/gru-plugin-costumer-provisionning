@@ -47,7 +47,7 @@
     </dependencies>
 
     <properties>
-        <componentName></componentName>
+        <componentName>Costumer Provisionning Plugin</componentName>
         <jiraProjectName>PCPROVISIO</jiraProjectName>
         <jiraComponentId>12953</jiraComponentId>
     </properties>
