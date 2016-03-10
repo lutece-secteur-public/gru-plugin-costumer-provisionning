@@ -6,9 +6,6 @@ import fr.paris.lutece.plugins.costumerprovisionning.business.UserDTO;
 import fr.paris.lutece.plugins.gru.business.customer.Customer;
 import fr.paris.lutece.portal.service.util.AppLogService;
 
-
-
-
 public class ProvisionningService {
 
 	

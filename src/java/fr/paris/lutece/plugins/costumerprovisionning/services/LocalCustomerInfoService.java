@@ -40,6 +40,7 @@ import fr.paris.lutece.plugins.gru.business.customer.CustomerHome;
 /**
  * LocalCustomerService
  */
+
 public class LocalCustomerInfoService implements ICustomerInfoService
 {
     /**

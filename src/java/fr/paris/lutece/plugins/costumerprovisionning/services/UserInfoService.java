@@ -48,6 +48,8 @@ public class UserInfoService
     private UserInfoService(  )
     {
     }
+    
+    
 
     /**
      * Return the unique instance
