@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.costumerprovisionning.services;
 
-
 import fr.paris.lutece.plugins.costumerprovisionning.business.UserDTO;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
 
@@ -48,8 +47,6 @@ public class UserInfoService
     private UserInfoService(  )
     {
     }
-    
-    
 
     /**
      * Return the unique instance

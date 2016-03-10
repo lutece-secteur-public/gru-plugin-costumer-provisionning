@@ -36,7 +36,7 @@ package fr.paris.lutece.plugins.costumerprovisionning.services;
 import fr.paris.lutece.plugins.gru.business.customer.Customer;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
 
-  
+
 /**
  * CustomerService
  */
