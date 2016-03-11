@@ -7,16 +7,16 @@
 
     <!-- USER INFO SERVICE -->
       
-  <bean id="costumer-provisionning.userinfoService" class="fr.paris.lutece.plugins.supply.modules.openam.services.OpenAmService" />
+  <bean id="customer-provisionning.userinfoService" class="fr.paris.lutece.plugins.supply.modules.openam.services.OpenAmService" />
   
    
  <!-- 
-  <bean id="costumer-provisionning.userinfoService" class="fr.paris.lutece.plugins.costumerprovisionning.services.MokeUserInfoProvider" /> 
+  <bean id="customer-provisionning.userinfoService" class="fr.paris.lutece.plugins.customerprovisionning.services.MokeUserInfoProvider" /> 
  
   -->
     
     <!-- CUSTOMER INFO SERVICE -->
-    <bean id="costumer-provisionning.customerinfoService" class="fr.paris.lutece.plugins.costumerprovisionning.services.LocalCustomerInfoService"/>  
+    <bean id="customer-provisionning.customerinfoService" class="fr.paris.lutece.plugins.customerprovisionning.services.LocalCustomerInfoService"/>  
     
     
 

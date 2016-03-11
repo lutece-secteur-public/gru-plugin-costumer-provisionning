@@ -31,41 +31,68 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.costumerprovisionning.services;
+package fr.paris.lutece.plugins.customerprovisionning.services;
 
 import fr.paris.lutece.plugins.gru.business.customer.Customer;
-import fr.paris.lutece.plugins.gru.business.customer.CustomerHome;
+import fr.paris.lutece.portal.service.spring.SpringContextService;
 
 
 /**
- * LocalCustomerService
+ * CustomerService
  */
-public class LocalCustomerInfoService implements ICustomerInfoService
+public final class CustomerService
 {
-    /**
-     * {@inheritDoc }
-     */
-    @Override
-    public Customer getCustomerByGuid( String strGid )
+    private static final String BEAN_CUSTOMER_INFO_SERVICE = "customer-provisionning.customerinfoService";
+    private static ICustomerInfoService _customerInfoService;
+    private static CustomerService _singleton;
+
+    /** private constructor */
+    private CustomerService(  )
     {
-        return CustomerHome.findByGuid( strGid );
     }
 
     /**
-     * {@inheritDoc }
+     * Return the unique instance
+     * @return The instance
      */
-    @Override
+    public static CustomerService instance(  )
+    {
+        if ( _singleton == null )
+        {
+            _singleton = new CustomerService(  );
+            _customerInfoService = SpringContextService.getBean( BEAN_CUSTOMER_INFO_SERVICE );
+        }
+
+        return _singleton;
+    }
+
+    /**
+     * Retrieve a customer by its guid
+     * @param strGuid The GUID
+     * @return The customer
+     */
+    public Customer getCustomerByGuid( String strGuid )
+    {
+        return _customerInfoService.getCustomerByGuid( strGuid );
+    }
+
+    /**
+     * Retrieve the customer by its ID
+     * @param strCid The customer ID
+     * @return The customer
+     */
     public Customer getCustomerByCid( String strCid )
     {
-        return CustomerHome.findByPrimaryKey( Integer.parseInt( strCid ) );
+        return _customerInfoService.getCustomerByCid( strCid );
     }
 
     /**
-     * {@inheritDoc }
+     * Create a new customer
+     * @param customer The customer
+     * @return  The created customer
      */
-    @Override
-    public Customer createCustomer( Customer c )
+    public Customer createCustomer( Customer customer )
     {
-        return CustomerHome.create( c );
+        return _customerInfoService.createCustomer( customer );
     }
 }

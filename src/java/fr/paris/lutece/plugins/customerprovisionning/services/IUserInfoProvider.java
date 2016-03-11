@@ -31,34 +31,21 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.costumerprovisionning.services;
+package fr.paris.lutece.plugins.customerprovisionning.services;
 
-import fr.paris.lutece.plugins.gru.business.customer.Customer;
+import fr.paris.lutece.plugins.customerprovisionning.business.UserDTO;
 
 
-public interface ICustomerInfoService
+/**
+ * IUserInfoProvider Interface
+ */
+public interface IUserInfoProvider
 {
     /**
-     * Retrieve a Customer by its GUID
+     * Returns user Info.
      *
-     * @param strGuid The GUID
-     * @return The customer
+     * @param guid the guid
+     * @return user info
      */
-    public Customer getCustomerByGuid( String strGuid );
-
-    /**
-     * Retrieve a Customer by its ID
-     *
-     * @param strCustomerId The customer ID
-     * @return The customer
-     */
-    public Customer getCustomerByCid( String strCustomerId );
-
-    /**
-     * Create a new customer in the customer base
-     *
-     * @param customer The customer to create
-     * @return The created customer
-     */
-    public Customer createCustomer( Customer customer );
+    UserDTO getUserInfo( String guid );
 }

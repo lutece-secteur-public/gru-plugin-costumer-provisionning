@@ -1,8 +1,8 @@
 /*
- * Copyright (c) 2002-2013, Mairie de Paris
-* All rights reserved.
-*
-* Redistribution and use in source and binary forms, with or without
+ * Copyright (c) 2002-2015, Mairie de Paris
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
  *
@@ -31,39 +31,65 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.costumerprovisionning.business;
+package fr.paris.lutece.plugins.customerprovisionning.business;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This is the business class for the object OpenAMUserDTO
+ * This is the business class for the object OpenAMUserDTO.
  */
 public class UserDTO
 {
+    /** The _str uid. */
     // Variables declarations 
     private String _strUid;
+
+    /** The _str civility. */
     private String _strCivility;
+
+    /** The _str firstname. */
     private String _strFirstname;
+
+    /** The _str lastname. */
     private String _strLastname;
+
+    /** The _str telephone number. */
     private String _strTelephoneNumber;
+
+    /** The _str birthday. */
     private String _strBirthday;
+
+    /** The _str street. */
     private String _strStreet;
+
+    /** The _str postal code. */
     private String _strPostalCode;
+
+    /** The _str city. */
     private String _strCity;
+
+    /** The _str city of birth. */
     private String _strCityOfBirth;
+
+    /** The _str email. */
     private String _strEmail;
+
+    /** The _str stay connected. */
     private String _strStayConnected;
 
     /**
-    * Returns the Uid
-    * @return The Uid
-    */
+     * Returns the Uid.
+     *
+     * @return The Uid
+     */
     public String getUid(  )
     {
         return _strUid;
     }
 
     /**
-     * Sets the Uid
+     * Sets the Uid.
+     *
      * @param strUid The Uid
      */
     public void setUid( String strUid )
@@ -72,7 +98,8 @@ public class UserDTO
     }
 
     /**
-     * Returns the Civility
+     * Returns the Civility.
+     *
      * @return The Civility
      */
     public String getCivility(  )
@@ -81,7 +108,8 @@ public class UserDTO
     }
 
     /**
-     * Sets the Civility
+     * Sets the Civility.
+     *
      * @param strCivility The Civility
      */
     public void setCivility( String strCivility )
@@ -90,7 +118,8 @@ public class UserDTO
     }
 
     /**
-     * Returns the Firstname
+     * Returns the Firstname.
+     *
      * @return The Firstname
      */
     public String getFirstname(  )
@@ -99,7 +128,8 @@ public class UserDTO
     }
 
     /**
-     * Sets the Firstname
+     * Sets the Firstname.
+     *
      * @param strFirstname The Firstname
      */
     public void setFirstname( String strFirstname )
@@ -108,7 +138,8 @@ public class UserDTO
     }
 
     /**
-     * Returns the Lastname
+     * Returns the Lastname.
+     *
      * @return The Lastname
      */
     public String getLastname(  )
@@ -117,7 +148,8 @@ public class UserDTO
     }
 
     /**
-     * Sets the Lastname
+     * Sets the Lastname.
+     *
      * @param strLastname The Lastname
      */
     public void setLastname( String strLastname )
@@ -126,7 +158,8 @@ public class UserDTO
     }
 
     /**
-     * Returns the TelephoneNumber
+     * Returns the TelephoneNumber.
+     *
      * @return The TelephoneNumber
      */
     public String getTelephoneNumber(  )
@@ -135,7 +168,8 @@ public class UserDTO
     }
 
     /**
-     * Sets the TelephoneNumber
+     * Sets the TelephoneNumber.
+     *
      * @param strTelephoneNumber The TelephoneNumber
      */
     public void setTelephoneNumber( String strTelephoneNumber )
@@ -144,7 +178,8 @@ public class UserDTO
     }
 
     /**
-     * Returns the Birthday
+     * Returns the Birthday.
+     *
      * @return The Birthday
      */
     public String getBirthday(  )
@@ -153,7 +188,8 @@ public class UserDTO
     }
 
     /**
-     * Sets the Birthday
+     * Sets the Birthday.
+     *
      * @param strBirthday The Birthday
      */
     public void setBirthday( String strBirthday )
@@ -162,7 +198,8 @@ public class UserDTO
     }
 
     /**
-     * Returns the Street
+     * Returns the Street.
+     *
      * @return The Street
      */
     public String getStreet(  )
@@ -171,7 +208,8 @@ public class UserDTO
     }
 
     /**
-     * Sets the Street
+     * Sets the Street.
+     *
      * @param strStreet The Street
      */
     public void setStreet( String strStreet )
@@ -180,7 +218,8 @@ public class UserDTO
     }
 
     /**
-     * Returns the PostalCode
+     * Returns the PostalCode.
+     *
      * @return The PostalCode
      */
     public String getPostalCode(  )
@@ -189,7 +228,8 @@ public class UserDTO
     }
 
     /**
-     * Sets the PostalCode
+     * Sets the PostalCode.
+     *
      * @param strPostalCode The PostalCode
      */
     public void setPostalCode( String strPostalCode )
@@ -198,7 +238,8 @@ public class UserDTO
     }
 
     /**
-     * Returns the City
+     * Returns the City.
+     *
      * @return The City
      */
     public String getCity(  )
@@ -207,7 +248,8 @@ public class UserDTO
     }
 
     /**
-     * Sets the City
+     * Sets the City.
+     *
      * @param strCity The City
      */
     public void setCity( String strCity )
@@ -216,7 +258,8 @@ public class UserDTO
     }
 
     /**
-     * Returns the CityOfBirth
+     * Returns the CityOfBirth.
+     *
      * @return The CityOfBirth
      */
     public String getCityOfBirth(  )
@@ -225,7 +268,8 @@ public class UserDTO
     }
 
     /**
-     * Sets the CityOfBirth
+     * Sets the CityOfBirth.
+     *
      * @param strCityOfBirth The CityOfBirth
      */
     public void setCityOfBirth( String strCityOfBirth )
@@ -234,8 +278,9 @@ public class UserDTO
     }
 
     /**
+     * Gets the email.
      *
-     * @return
+     * @return the email
      */
     public String getEmail(  )
     {
@@ -243,25 +288,28 @@ public class UserDTO
     }
 
     /**
+     * Sets the email.
      *
-     * @param _strEmail
+     * @param stremail the new email
      */
-    public void setEmail( String _strEmail )
+    public void setEmail( String stremail )
     {
-        this._strEmail = _strEmail;
+        this._strEmail = stremail;
     }
 
     /**
-    * Returns the StayConnected
-    * @return The StayConnected
-    */
+     * Returns the StayConnected.
+     *
+     * @return The StayConnected
+     */
     public String getStayConnected(  )
     {
         return _strStayConnected;
     }
 
     /**
-     * Sets the StayConnected
+     * Sets the StayConnected.
+     *
      * @param strStayConnected The StayConnected
      */
     public void setStayConnected( String strStayConnected )
