@@ -27,16 +27,16 @@ public class ProvisionningService {
 		Customer gruCustomer=null;
 		
 		   // CASE 1 NOT CID
-        if ( strCuid == null || StringUtils.isEmpty( strCuid ) )
+        if ( strCuid == null || StringUtils.isEmpty( strCuid ) || !StringUtils.isNumeric( strCuid ) )
         {
             // CASE 1.1 : no cid and no guid:  break the flux and wait for a new flux with one of them
-            if ( (strCuid == null || StringUtils.isEmpty( strGuid )) && userDto == null)
+            if ( (strCuid == null || !StringUtils.isNumeric( strCuid )) && (strGuid == null || StringUtils.isEmpty( strGuid ) ) && userDto == null)
             {
             	
                 AppLogService.error( "Provionning - Error : JSON doesnot contains any GUID nor Customer ID : " + strCuid  );
   
             } // CASE 1.2  : no cid and guid:  look for a mapping beween an existing guid
-            else if(!StringUtils.isEmpty( strGuid ))
+            else if( strGuid != null && !StringUtils.isEmpty( strGuid ) )
             {
             	
             	AppLogService.error( "Provionning - Info : CAS 1.2.1" + "\n" );
