@@ -9,7 +9,13 @@ import fr.paris.lutece.portal.service.util.AppLogService;
 public class ProvisionningService {
 
 	
-	
+	/**
+	 *  processGuidCuid
+	 * @param strGuid
+	 * @param strCuid
+	 * @param userDto
+	 * @return Customer
+	 */
 	public static Customer processGuidCuid(String strGuid, String strCuid,UserDTO userDto)
 	{
 		
@@ -28,20 +34,16 @@ public class ProvisionningService {
             {
             	
                 AppLogService.error( "Provionning - Error : JSON doesnot contains any GUID nor Customer ID : " + strCuid  );
-            //    return error( "grusupply - Error : JSON doesnot contains any GUID nor Customer ID" );
+  
             } // CASE 1.2  : no cid and guid:  look for a mapping beween an existing guid
             else if(!StringUtils.isEmpty( strGuid ))
             {
             	
             	AppLogService.error( "Provionning - Info : CAS 1.2.1" + "\n" );
-                //gruCustomer = CustomerService.instance(  ).getCustomerByGuid( notif.getUserGuid(  ) );
                 gruCustomer =getCustomerByGuid(strGuid);
 
                 if ( gruCustomer == null )
                 {
-//                    gruCustomer = CustomerService.instance(  )
-//                                                 .createCustomer( buildCustomer( 
-//                                UserInfoService.instance(  ).getUserInfo( strTempGuid ), strTempGuid ) );
                     
                     gruCustomer = createCustomerByGuid(strGuid);
                     
@@ -54,7 +56,7 @@ public class ProvisionningService {
             	AppLogService.error( "Provionning - Info : CAS 1.2.2" + "\n" );
             }
         } // CASE 2 : cid and (guid or no guid):  find customer info in GRU database
-        else
+        else if(StringUtils.isNumeric( strCuid ) )
         {
         	//MUST CONTROL IF COSTUMER CUID IS NUMBER FORMAT, ELSE : java.lang.NumberFormatException: For input string:
         	AppLogService.error( "Provionning - Info : CAS 2" + "\n" );
@@ -71,8 +73,11 @@ public class ProvisionningService {
         return gruCustomer;
 	}
 	
-	/**Get costumer by Guid
-	 * */
+	/**
+	 * Get costumer by Guid
+	 * @param strGuid
+	 * @return
+	 */
 	public static Customer getCustomerByGuid(String strGuid)
 	{		
 		Customer grusupplyCustomer = CustomerService.instance(  ).getCustomerByGuid( strGuid );
@@ -80,8 +85,11 @@ public class ProvisionningService {
 	}
 	
 	
-	/** Create costumer by Guid
-	 * */
+	/**
+	 * Create costumer by Guid
+	 * @param strGuid
+	 * @return
+	 */
 	public static  Customer createCustomerByGuid(String strGuid)
 	{		
 		UserDTO user = UserInfoService.instance(  ).getUserInfo( strGuid );	
@@ -89,8 +97,12 @@ public class ProvisionningService {
 		return  costumer;
 	}
 	
-	/** Create costumer by Guid
-	 * */
+	/**
+	 * Create costumer by Guid
+	 * @param userDto
+	 * @param strGuidFromTicket
+	 * @return
+	 */
 	public static  Customer createCustomerByGuid(UserDTO userDto, String strGuidFromTicket)
 	{		
 		
@@ -99,68 +111,45 @@ public class ProvisionningService {
 	}
 	
 	
-	/**CGet costumer by Cuid
-	 * */
+	/**
+	 * Get costumer by Cuid
+	 * @param strCuid
+	 * @return
+	 */
 	
 	public static Customer getCustomerByCuid(String strCuid)
 	{
 		
 		Customer grusupplyCustomer = CustomerService.instance(  ).getCustomerByCid( strCuid );
 		
-	return  grusupplyCustomer;
+	    return  grusupplyCustomer;
 	}
 	
-	   private static Customer buildCustomer( UserDTO user, String strUserId )
-	    {
-	        fr.paris.lutece.plugins.gru.business.customer.Customer gruCustomer = new fr.paris.lutece.plugins.gru.business.customer.Customer(  );
-	        gruCustomer.setFirstname( setEmptyValueWhenNullValue( user.getFirstname(  ) ) );
-	        gruCustomer.setLastname( setEmptyValueWhenNullValue( user.getLastname(  ) ) );
-	        gruCustomer.setEmail( setEmptyValueWhenNullValue( user.getEmail(  ) ) );
-	        gruCustomer.setAccountGuid( setEmptyValueWhenNullValue( strUserId ) );
-	        gruCustomer.setAccountLogin( setEmptyValueWhenNullValue( user.getEmail(  ) ) );
-	        gruCustomer.setMobilePhone( setEmptyValueWhenNullValue( user.getTelephoneNumber(  ) ) );
-	        gruCustomer.setExtrasAttributes( "NON RENSEIGNE" );
+	/**
+	 * 
+	 * @param user
+	 * @param strUserId
+	 * @return
+	 */
+	
+	private static Customer buildCustomer( UserDTO user, String strUserId )
+	{
+	    fr.paris.lutece.plugins.gru.business.customer.Customer gruCustomer = new fr.paris.lutece.plugins.gru.business.customer.Customer(  );
+	    gruCustomer.setFirstname( setEmptyValueWhenNullValue( user.getFirstname(  ) ) );
+	    gruCustomer.setLastname( setEmptyValueWhenNullValue( user.getLastname(  ) ) );
+	    gruCustomer.setEmail( setEmptyValueWhenNullValue( user.getEmail(  ) ) );
+	    gruCustomer.setAccountGuid( setEmptyValueWhenNullValue( strUserId ) );
+	    gruCustomer.setAccountLogin( setEmptyValueWhenNullValue( user.getEmail(  ) ) );
+	    gruCustomer.setMobilePhone( setEmptyValueWhenNullValue( user.getTelephoneNumber(  ) ) );
+	    gruCustomer.setExtrasAttributes( "NON RENSEIGNE" );
 
 	        return gruCustomer;
-	    }
+	}
 	   
-	   private static String setEmptyValueWhenNullValue( String value )
-	    {
-	        return ( StringUtils.isEmpty( value ) ) ? "" : value;
-	    }
+	private static String setEmptyValueWhenNullValue( String value )
+	{
+	     return ( StringUtils.isEmpty( value ) ) ? "" : value;
+	}
 	   
 
-	    /**
-	     * Method which create a demand from Data base, a flux and GRU database
-	     *
-	     * @param gruCustomer
-	     * @return
-	     */
-//	    private static fr.paris.lutece.plugins.grusupply.business.Customer populateCustomerGRUToProvisionning( fr.paris.lutece.plugins.gru.business.customer.Customer gruCustomer )
-//	    {
-//	        if ( gruCustomer == null )
-//	        {
-//	            throw new NullPointerException(  );
-//	        }
-//
-//	        fr.paris.lutece.plugins.grusupply.business.Customer grusupplyCustomer = new fr.paris.lutece.plugins.grusupply.business.Customer(  );
-//	        grusupplyCustomer.setCustomerId( gruCustomer.getId(  ) );
-//	        grusupplyCustomer.setName( gruCustomer.getLastname(  ) );
-//	        grusupplyCustomer.setFirstName( gruCustomer.getFirstname(  ) );
-//	        grusupplyCustomer.setEmail( gruCustomer.getEmail(  ) );
-//	        grusupplyCustomer.setTelephoneNumber( gruCustomer.getMobilePhone(  ) );
-//
-//	        /*        grusupplyCustomer.setBirthday( gruCustomer.getBirthday(  ) );
-//	         grusupplyCustomer.setCivility( gruCustomer.getCivility(  ) );
-//	         grusupplyCustomer.setStreet( gruCustomer.getStreet(  ) );
-//	         grusupplyCustomer.setCityOfBirth( gruCustomer.getCityOfBirth(  ) );
-//	         grusupplyCustomer.setCity( gruCustomer.getCity(  ) );
-//	         grusupplyCustomer.setPostalCode( gruCustomer.getPostalCode(  ) );
-//	         */
-//	        grusupplyCustomer.setEmail( gruCustomer.getEmail(  ) );
-//	        grusupplyCustomer.setStayConnected( true );
-//
-//	        // TODO PROBLEME DE CHAMPS
-//	        return grusupplyCustomer;
-//	    }
 }
