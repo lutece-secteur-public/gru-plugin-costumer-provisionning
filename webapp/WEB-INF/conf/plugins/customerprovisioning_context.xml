@@ -7,11 +7,12 @@
 
     <!-- USER INFO SERVICE -->
       
-  <bean id="customer-provisioning.userinfoService" class="fr.paris.lutece.plugins.customerprovisioning.modules.openam.services.OpenAmService" />
   
    
- <!-- 
   <bean id="customer-provisioning.userinfoService" class="fr.paris.lutece.plugins.customerprovisioning.services.MokeUserInfoProvider" /> 
+   
+ <!-- 
+ <bean id="customer-provisioning.userinfoService" class="fr.paris.lutece.plugins.customerprovisioning.modules.openam.services.OpenAmService" />
  
   -->
     
