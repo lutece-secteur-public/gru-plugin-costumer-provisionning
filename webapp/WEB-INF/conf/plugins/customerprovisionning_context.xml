@@ -7,7 +7,7 @@
 
     <!-- USER INFO SERVICE -->
       
-  <bean id="customer-provisionning.userinfoService" class="fr.paris.lutece.plugins.supply.modules.openam.services.OpenAmService" />
+  <bean id="customer-provisionning.userinfoService" class="fr.paris.lutece.plugins.customerprovisioning.modules.openam.services.OpenAmService" />
   
    
  <!-- 
