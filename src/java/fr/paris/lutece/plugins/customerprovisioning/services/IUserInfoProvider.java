@@ -31,57 +31,21 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.customerprovisionning.services;
+package fr.paris.lutece.plugins.customerprovisioning.services;
 
-import fr.paris.lutece.plugins.customerprovisionning.business.UserDTO;
-import fr.paris.lutece.portal.service.spring.SpringContextService;
+import fr.paris.lutece.plugins.customerprovisioning.business.UserDTO;
 
 
 /**
- * The Class UserInfoService.
+ * IUserInfoProvider Interface
  */
-public final class UserInfoService
+public interface IUserInfoProvider
 {
-    /** The Constant BEAN_USER_INFO_SERVICE. */
-    private static final String BEAN_USER_INFO_SERVICE = "customer-provisionning.userinfoService";
-
-    /** The _user info provider. */
-    private static IUserInfoProvider _userInfoProvider;
-
-    /** The _singleton. */
-    private static UserInfoService _singleton;
-
     /**
-     *  private constructor.
-     */
-    private UserInfoService(  )
-    {
-    }
-
-    /**
-     * Return the unique instance.
+     * Returns user Info.
      *
-     * @return The instance
+     * @param guid the guid
+     * @return user info
      */
-    public static UserInfoService instance(  )
-    {
-        if ( _singleton == null )
-        {
-            _singleton = new UserInfoService(  );
-            _userInfoProvider = SpringContextService.getBean( BEAN_USER_INFO_SERVICE );
-        }
-
-        return _singleton;
-    }
-
-    /**
-     * Gets User info.
-     *
-     * @param strGuid The GUID
-     * @return user infos
-     */
-    public UserDTO getUserInfo( String strGuid )
-    {
-        return (UserDTO) _userInfoProvider.getUserInfo( strGuid );
-    }
+    UserDTO getUserInfo( String guid );
 }

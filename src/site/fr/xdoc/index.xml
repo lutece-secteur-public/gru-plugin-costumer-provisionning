@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
     <properties>
-        <title>Plugin customerprovisionning</title>
+        <title>Plugin customerprovisioning</title>
     </properties>
     <body>
-        <section name="Plugin customerprovisionning">
+        <section name="Plugin customerprovisioning">
             <!--
             <p>
-                <img src="images/customerprovisionning.png" />
+                <img src="images/customerprovisioning.png" />
             </p>
             -->
             <subsection name="Introduction">

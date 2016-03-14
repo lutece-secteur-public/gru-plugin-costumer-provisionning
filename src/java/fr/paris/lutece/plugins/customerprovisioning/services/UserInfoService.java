@@ -31,41 +31,57 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.customerprovisionning.services;
+package fr.paris.lutece.plugins.customerprovisioning.services;
 
-import fr.paris.lutece.plugins.gru.business.customer.Customer;
-import fr.paris.lutece.plugins.gru.business.customer.CustomerHome;
+import fr.paris.lutece.plugins.customerprovisioning.business.UserDTO;
+import fr.paris.lutece.portal.service.spring.SpringContextService;
 
 
 /**
- * LocalCustomerService
+ * The Class UserInfoService.
  */
-public class LocalCustomerInfoService implements ICustomerInfoService
+public final class UserInfoService
 {
+    /** The Constant BEAN_USER_INFO_SERVICE. */
+    private static final String BEAN_USER_INFO_SERVICE = "customer-provisioning.userinfoService";
+
+    /** The _user info provider. */
+    private static IUserInfoProvider _userInfoProvider;
+
+    /** The _singleton. */
+    private static UserInfoService _singleton;
+
     /**
-     * {@inheritDoc }
+     *  private constructor.
      */
-    @Override
-    public Customer getCustomerByGuid( String strGid )
+    private UserInfoService(  )
     {
-        return CustomerHome.findByGuid( strGid );
     }
 
     /**
-     * {@inheritDoc }
+     * Return the unique instance.
+     *
+     * @return The instance
      */
-    @Override
-    public Customer getCustomerByCid( String strCid )
+    public static UserInfoService instance(  )
     {
-        return CustomerHome.findByPrimaryKey( Integer.parseInt( strCid ) );
+        if ( _singleton == null )
+        {
+            _singleton = new UserInfoService(  );
+            _userInfoProvider = SpringContextService.getBean( BEAN_USER_INFO_SERVICE );
+        }
+
+        return _singleton;
     }
 
     /**
-     * {@inheritDoc }
+     * Gets User info.
+     *
+     * @param strGuid The GUID
+     * @return user infos
      */
-    @Override
-    public Customer createCustomer( Customer c )
+    public UserDTO getUserInfo( String strGuid )
     {
-        return CustomerHome.create( c );
+        return (UserDTO) _userInfoProvider.getUserInfo( strGuid );
     }
 }

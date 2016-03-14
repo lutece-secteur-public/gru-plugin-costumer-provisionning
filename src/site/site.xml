@@ -5,13 +5,13 @@
             <item name="FR" href="/fr/index.html" />
         </links>
         
-        <menu name="Plugin customerprovisionning">
+        <menu name="Plugin customerprovisioning">
             <item name="Home" href="index.html"/>
         </menu>
         
         <menu name="Downloads" inherit="bottom">
-            <item name="Released versions" href="../../stable_builds/plugins/plugin-customerprovisionning/"/>
-            <item name="Nightly builds" href="../../nightly_builds/plugins/plugin-customerprovisionning/" />
+            <item name="Released versions" href="../../stable_builds/plugins/plugin-customerprovisioning/"/>
+            <item name="Nightly builds" href="../../nightly_builds/plugins/plugin-customerprovisioning/" />
         </menu>
 
     <!--

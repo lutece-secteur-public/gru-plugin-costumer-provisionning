@@ -31,37 +31,25 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.customerprovisionning.services;
+package fr.paris.lutece.plugins.customerprovisioning.services;
 
-import fr.paris.lutece.plugins.gru.business.customer.Customer;
+import fr.paris.lutece.plugins.customerprovisioning.business.UserDTO;
 
 
 /**
- * The Interface ICustomerInfoService.
+ * MokeUserInfoProvider
  */
-public interface ICustomerInfoService
+public class MokeUserInfoProvider implements IUserInfoProvider
 {
-    /**
-     * Retrieve a Customer by its GUID
-     *
-     * @param strGuid The GUID
-     * @return The customer
-     */
-    Customer getCustomerByGuid( String strGuid );
+    @Override
+    public UserDTO getUserInfo( String strId )
+    {
+        UserDTO user = new UserDTO(  );
+        user.setFirstname( "Martin" );
+        user.setLastname( "Dupont" );
+        user.setEmail( "mdupont@domain.com" );
+        user.setUid( strId );
 
-    /**
-     * Retrieve a Customer by its ID
-     *
-     * @param strCustomerId The customer ID
-     * @return The customer
-     */
-    Customer getCustomerByCid( String strCustomerId );
-
-    /**
-     * Create a new customer in the customer base
-     *
-     * @param customer The customer to create
-     * @return The created customer
-     */
-    Customer createCustomer( Customer customer );
+        return user;
+    }
 }

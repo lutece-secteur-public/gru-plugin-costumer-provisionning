@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plug-in>
-    <name>customerprovisionning</name>
+    <name>customerprovisioning</name>
     <class>fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation</class>
     <version>1.0.0</version>
     <documentation></documentation>
     <installation></installation>
     <changes></changes>
     <user-guide></user-guide>
-    <description>customerprovisionning.plugin.description</description>
-    <provider>customerprovisionning.plugin.provider</provider>
+    <description>customerprovisioning.plugin.description</description>
+    <provider>customerprovisioning.plugin.provider</provider>
     <provider-url>http://www.paris.fr/</provider-url>
     <icon-url>images/admin/skin/feature_default_icon.png</icon-url>  
      <copyright>Copyright 2001-2015 Mairie de Paris</copyright>

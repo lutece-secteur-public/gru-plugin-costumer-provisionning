@@ -31,25 +31,41 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.customerprovisionning.services;
+package fr.paris.lutece.plugins.customerprovisioning.services;
 
-import fr.paris.lutece.plugins.customerprovisionning.business.UserDTO;
+import fr.paris.lutece.plugins.gru.business.customer.Customer;
+import fr.paris.lutece.plugins.gru.business.customer.CustomerHome;
 
 
 /**
- * MokeUserInfoProvider
+ * LocalCustomerService
  */
-public class MokeUserInfoProvider implements IUserInfoProvider
+public class LocalCustomerInfoService implements ICustomerInfoService
 {
+    /**
+     * {@inheritDoc }
+     */
     @Override
-    public UserDTO getUserInfo( String strId )
+    public Customer getCustomerByGuid( String strGid )
     {
-        UserDTO user = new UserDTO(  );
-        user.setFirstname( "Martin" );
-        user.setLastname( "Dupont" );
-        user.setEmail( "mdupont@domain.com" );
-        user.setUid( strId );
+        return CustomerHome.findByGuid( strGid );
+    }
 
-        return user;
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public Customer getCustomerByCid( String strCid )
+    {
+        return CustomerHome.findByPrimaryKey( Integer.parseInt( strCid ) );
+    }
+
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public Customer createCustomer( Customer c )
+    {
+        return CustomerHome.create( c );
     }
 }

@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.customerprovisionning.services;
+package fr.paris.lutece.plugins.customerprovisioning.services;
 
 import fr.paris.lutece.plugins.gru.business.customer.Customer;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
@@ -42,7 +42,7 @@ import fr.paris.lutece.portal.service.spring.SpringContextService;
  */
 public final class CustomerService
 {
-    private static final String BEAN_CUSTOMER_INFO_SERVICE = "customer-provisionning.customerinfoService";
+    private static final String BEAN_CUSTOMER_INFO_SERVICE = "customer-provisioning.customerinfoService";
     private static ICustomerInfoService _customerInfoService;
     private static CustomerService _singleton;
 

@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.customerprovisionning.business;
+package fr.paris.lutece.plugins.customerprovisioning.business;
 
 
 // TODO: Auto-generated Javadoc

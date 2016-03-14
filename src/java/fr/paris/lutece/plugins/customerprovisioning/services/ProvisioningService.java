@@ -31,9 +31,9 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.customerprovisionning.services;
+package fr.paris.lutece.plugins.customerprovisioning.services;
 
-import fr.paris.lutece.plugins.customerprovisionning.business.UserDTO;
+import fr.paris.lutece.plugins.customerprovisioning.business.UserDTO;
 import fr.paris.lutece.plugins.gru.business.customer.Customer;
 import fr.paris.lutece.portal.service.util.AppLogService;
 
@@ -41,14 +41,14 @@ import org.apache.commons.lang.StringUtils;
 
 
 /**
- * The Class ProvisionningService.
+ * The Class ProvisioningService.
  */
-public final class ProvisionningService
+public final class ProvisioningService
 {
     /**
-     * Instantiates a new provisionning service.
+     * Instantiates a new provisioning service.
      */
-    private ProvisionningService(  )
+    private ProvisioningService(  )
     {
     }
 
@@ -70,7 +70,7 @@ public final class ProvisionningService
             // CASE 1.1 : no cid and no guid:  break the flux and wait for a new flux with one of them
             if ( StringUtils.isEmpty( strGuid ) && ( userDto == null ) )
             {
-                AppLogService.error( "Provionning - Error : JSON doesnot contains any GUID nor Customer ID : " +
+                AppLogService.error( "Provisioning - Error : JSON doesnot contains any GUID nor Customer ID : " +
                     strCuid );
 
                 //    return error( "grusupply - Error : JSON doesnot contains any GUID nor Customer ID" );
@@ -87,7 +87,7 @@ public final class ProvisionningService
                     //                                UserInfoService.instance(  ).getUserInfo( strTempGuid ), strTempGuid ) );
                     gruCustomer = createCustomerByGuid( strGuid );
 
-                    AppLogService.info( "Provionning - New user created into the GRU for the guid : " + strGuid +
+                    AppLogService.info( "Provisioning - New user created into the GRU for the guid : " + strGuid +
                         " its customer id is : " + gruCustomer.getId(  ) );
                 }
             }
@@ -103,7 +103,7 @@ public final class ProvisionningService
 
             if ( gruCustomer == null )
             {
-                AppLogService.error( "Provionning - Error : No user found with the customer ID : " + strCuid );
+                AppLogService.error( "Provisioning - Error : No user found with the customer ID : " + strCuid );
             }
         }
 
@@ -203,7 +203,7 @@ public final class ProvisionningService
      * @return
      */
 
-    //	    private static fr.paris.lutece.plugins.grusupply.business.Customer populateCustomerGRUToProvisionning( fr.paris.lutece.plugins.gru.business.customer.Customer gruCustomer )
+    //	    private static fr.paris.lutece.plugins.grusupply.business.Customer populateCustomerGRUToProvisioning( fr.paris.lutece.plugins.gru.business.customer.Customer gruCustomer )
     //	    {
     //	        if ( gruCustomer == null )
     //	        {
