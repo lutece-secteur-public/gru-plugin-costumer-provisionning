@@ -55,6 +55,7 @@ public class UserDTO
 
     /** The _str telephone number. */
     private String _strTelephoneNumber;
+    private String _strFixedPhoneNumber;
 
     /** The _str birthday. */
     private String _strBirthday;
@@ -175,6 +176,22 @@ public class UserDTO
     public void setTelephoneNumber( String strTelephoneNumber )
     {
         _strTelephoneNumber = strTelephoneNumber;
+    }
+
+    /**
+          * @return the _strFixedPhoneNumber
+          */
+    public String getFixedPhoneNumber(  )
+    {
+        return _strFixedPhoneNumber;
+    }
+
+    /**
+      * @param strFixedPhoneNumber the _strFixedPhoneNumber to set
+      */
+    public void setFixedPhoneNumber( String strFixedPhoneNumber )
+    {
+        this._strFixedPhoneNumber = strFixedPhoneNumber;
     }
 
     /**

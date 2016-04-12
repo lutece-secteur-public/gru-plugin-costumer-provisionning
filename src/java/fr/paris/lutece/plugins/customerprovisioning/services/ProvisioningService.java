@@ -40,22 +40,18 @@ import fr.paris.lutece.portal.service.util.AppLogService;
 import org.apache.commons.lang.StringUtils;
 
 
-
-
 /**
  * The Class ProvisioningService.
  */
 public final class ProvisioningService
 {
-    
-	/**
-	 * Instantiates a new provisioning service.
-	 */
-	private ProvisioningService()
-	{
-		
-	}
-   
+    /**
+     * Instantiates a new provisioning service.
+     */
+    private ProvisioningService(  )
+    {
+    }
+
     /**
      * Process guid cuid.
      *
@@ -116,7 +112,6 @@ public final class ProvisioningService
         return gruCustomer;
     }
 
-    
     /**
      * Gets the customer by guid.
      *
@@ -130,7 +125,6 @@ public final class ProvisioningService
         return grusupplyCustomer;
     }
 
-   
     /**
      * Creates the customer by guid.
      *
@@ -145,7 +139,6 @@ public final class ProvisioningService
         return costumer;
     }
 
-   
     /**
      * Creates the customer by guid.
      *
@@ -160,7 +153,6 @@ public final class ProvisioningService
         return costumer;
     }
 
- 
     /**
      * Gets the customer by cuid.
      *
@@ -190,6 +182,7 @@ public final class ProvisioningService
         gruCustomer.setAccountGuid( setEmptyValueWhenNullValue( strUserId ) );
         gruCustomer.setAccountLogin( setEmptyValueWhenNullValue( user.getEmail(  ) ) );
         gruCustomer.setMobilePhone( setEmptyValueWhenNullValue( user.getTelephoneNumber(  ) ) );
+        gruCustomer.setFixedPhoneNumber( setEmptyValueWhenNullValue( user.getFixedPhoneNumber(  ) ) );
         gruCustomer.setExtrasAttributes( "NON RENSEIGNE" );
 
         return gruCustomer;
