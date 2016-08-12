@@ -62,9 +62,12 @@ public final class ProvisioningService
      */
     public static Customer processGuidCuid( String strGuid, String strCuid, UserDTO userDto )
     {
-        AppLogService.error( "\n" + "Provionning - Info : GUID : " + strGuid + "\n" );
-        AppLogService.error( "Provionning - Info : CID : " + strCuid + "\n" );
-        AppLogService.error( "Provionning - Info : user : " + userDto + "\n" );
+        if ( AppLogService.isDebugEnabled(  ) )
+        {
+            AppLogService.debug( "\n" + "Provisionning - Info : GUID : " + strGuid + "\n" );
+            AppLogService.debug( "Provisionning - Info : CID : " + strCuid + "\n" );
+            AppLogService.debug( "Provisionning - Info : user : " + userDto + "\n" );
+        }
 
         Customer gruCustomer = null;
 
@@ -75,37 +78,37 @@ public final class ProvisioningService
             if ( ( ( strCuid == null ) || !StringUtils.isNumeric( strCuid ) ) &&
                     ( ( strGuid == null ) || StringUtils.isEmpty( strGuid ) ) && ( userDto == null ) )
             {
-                AppLogService.error( "Provionning - Error : JSON doesnot contains any GUID nor Customer ID : " +
+                AppLogService.error( "Provisionning - Error : JSON doesnot contains any GUID nor Customer ID : " +
                     strCuid );
             } // CASE 1.2  : no cid and guid:  look for a mapping beween an existing guid
             else if ( ( strGuid != null ) && !StringUtils.isEmpty( strGuid ) )
             {
-                AppLogService.error( "Provionning - Info : CAS 1.2.1" + "\n" );
                 gruCustomer = getCustomerByGuid( strGuid );
 
                 if ( gruCustomer == null )
                 {
                     gruCustomer = createCustomerByGuid( strGuid );
 
-                    AppLogService.info( "Provionning - New user created into the GRU for the guid : " + strGuid +
-                        " its customer id is : " + gruCustomer.getId(  ) );
+                    if ( AppLogService.isDebugEnabled(  ) )
+                    {
+                        AppLogService.debug( "Provisionning - New user created into the GRU for the guid : " + strGuid +
+                            " its customer id is : " + gruCustomer.getId(  ) );
+                    }
                 }
             }
             else if ( userDto != null )
             {
                 gruCustomer = createCustomerByGuid( userDto, strGuid );
-                AppLogService.error( "Provionning - Info : CAS 1.2.2" + "\n" );
             }
         } // CASE 2 : cid and (guid or no guid):  find customer info in GRU database
         else if ( StringUtils.isNumeric( strCuid ) )
         {
             //MUST CONTROL IF COSTUMER CUID IS NUMBER FORMAT, ELSE : java.lang.NumberFormatException: For input string:
-            AppLogService.error( "Provionning - Info : CAS 2" + "\n" );
             gruCustomer = getCustomerByCuid( strCuid );
 
             if ( gruCustomer == null )
             {
-                AppLogService.error( "Provionning - Error : No user found with the customer ID : " + strCuid );
+                AppLogService.error( "Provisionning - Error : No user found with the customer ID : " + strCuid );
             }
         }
 
