@@ -53,6 +53,7 @@ public final class CustomerService
 
     /**
      * Return the unique instance
+     *
      * @return The instance
      */
     public static CustomerService instance(  )
@@ -68,7 +69,9 @@ public final class CustomerService
 
     /**
      * Retrieve a customer by its guid
-     * @param strGuid The GUID
+     *
+     * @param strGuid
+     *            The GUID
      * @return The customer
      */
     public Customer getCustomerByGuid( String strGuid )
@@ -78,7 +81,9 @@ public final class CustomerService
 
     /**
      * Retrieve the customer by its ID
-     * @param strCid The customer ID
+     *
+     * @param strCid
+     *            The customer ID
      * @return The customer
      */
     public Customer getCustomerByCid( String strCid )
@@ -88,8 +93,10 @@ public final class CustomerService
 
     /**
      * Create a new customer
-     * @param customer The customer
-     * @return  The created customer
+     *
+     * @param customer
+     *            The customer
+     * @return The created customer
      */
     public Customer createCustomer( Customer customer )
     {

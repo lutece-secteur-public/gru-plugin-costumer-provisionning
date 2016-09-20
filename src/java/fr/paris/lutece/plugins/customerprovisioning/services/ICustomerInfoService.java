@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.customerprovisioning.services;
 
 import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 
+
 /**
  * The Interface ICustomerInfoService.
  */
@@ -43,7 +44,8 @@ public interface ICustomerInfoService
     /**
      * Retrieve a Customer by its GUID
      *
-     * @param strGuid The GUID
+     * @param strGuid
+     *            The GUID
      * @return The customer
      */
     Customer getCustomerByGuid( String strGuid );
@@ -51,7 +53,8 @@ public interface ICustomerInfoService
     /**
      * Retrieve a Customer by its ID
      *
-     * @param strCustomerId The customer ID
+     * @param strCustomerId
+     *            The customer ID
      * @return The customer
      */
     Customer getCustomerByCid( String strCustomerId );
@@ -59,7 +62,8 @@ public interface ICustomerInfoService
     /**
      * Create a new customer in the customer base
      *
-     * @param customer The customer to create
+     * @param customer
+     *            The customer to create
      * @return The created customer
      */
     Customer createCustomer( Customer customer );

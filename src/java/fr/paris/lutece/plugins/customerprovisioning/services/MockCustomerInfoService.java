@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.customerprovisioning.services;
 
 import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 
+
 /**
  * LocalCustomerService
  */
@@ -43,17 +44,17 @@ public class MockCustomerInfoService implements ICustomerInfoService
     private static final String FIRSTNAME = "John";
     private static final String LASTNAME = "Doe";
 
-	/**
-     * {@inheritDoc }
-     */
+    /**
+    * {@inheritDoc }
+    */
     @Override
     public Customer getCustomerByGuid( String strGid )
     {
-        Customer customer = new Customer();
+        Customer customer = new Customer(  );
         customer.setFirstname( FIRSTNAME );
         customer.setLastname( LASTNAME );
-        
-    	return customer;
+
+        return customer;
     }
 
     /**
@@ -62,11 +63,11 @@ public class MockCustomerInfoService implements ICustomerInfoService
     @Override
     public Customer getCustomerByCid( String strCid )
     {
-        Customer customer = new Customer();
+        Customer customer = new Customer(  );
         customer.setFirstname( FIRSTNAME );
         customer.setLastname( LASTNAME );
-        
-    	return customer;
+
+        return customer;
     }
 
     /**
@@ -75,7 +76,6 @@ public class MockCustomerInfoService implements ICustomerInfoService
     @Override
     public Customer createCustomer( Customer c )
     {
-      
-    	return c;
+        return c;
     }
 }

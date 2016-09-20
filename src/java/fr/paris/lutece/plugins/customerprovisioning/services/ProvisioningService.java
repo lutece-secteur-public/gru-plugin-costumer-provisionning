@@ -34,11 +34,11 @@
 package fr.paris.lutece.plugins.customerprovisioning.services;
 
 import fr.paris.lutece.plugins.customerprovisioning.business.UserDTO;
+import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 import fr.paris.lutece.portal.service.util.AppLogService;
 
 import org.apache.commons.lang.StringUtils;
 
-import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 
 /**
  * The Class ProvisioningService.
@@ -55,9 +55,12 @@ public final class ProvisioningService
     /**
      * Process guid cuid.
      *
-     * @param strGuid the str guid
-     * @param strCuid the str cuid
-     * @param userDto the user dto
+     * @param strGuid
+     *            the str guid
+     * @param strCuid
+     *            the str cuid
+     * @param userDto
+     *            the user dto
      * @return the customer
      */
     public static Customer processGuidCuid( String strGuid, String strCuid, UserDTO userDto )
@@ -74,13 +77,16 @@ public final class ProvisioningService
         // CASE 1 NOT CID
         if ( ( strCuid == null ) || StringUtils.isEmpty( strCuid ) || !StringUtils.isNumeric( strCuid ) )
         {
-            // CASE 1.1 : no cid and no guid:  break the flux and wait for a new flux with one of them
+            // CASE 1.1 : no cid and no guid: break the flux and wait for a new
+            // flux with one of them
             if ( ( ( strCuid == null ) || !StringUtils.isNumeric( strCuid ) ) &&
                     ( ( strGuid == null ) || StringUtils.isEmpty( strGuid ) ) && ( userDto == null ) )
             {
                 AppLogService.error( "Provisionning - Error : JSON doesnot contains any GUID nor Customer ID : " +
                     strCuid );
-            } // CASE 1.2  : no cid and guid:  look for a mapping beween an existing guid
+            } // CASE 1.2 : no cid and guid: look for a mapping beween an
+              // existing guid
+
             else if ( ( strGuid != null ) && !StringUtils.isEmpty( strGuid ) )
             {
                 gruCustomer = getCustomerByGuid( strGuid );
@@ -100,10 +106,13 @@ public final class ProvisioningService
             {
                 gruCustomer = createCustomerByGuid( userDto, strGuid );
             }
-        } // CASE 2 : cid and (guid or no guid):  find customer info in GRU database
+        } // CASE 2 : cid and (guid or no guid): find customer info in GRU
+          // database
+
         else if ( StringUtils.isNumeric( strCuid ) )
         {
-            //MUST CONTROL IF COSTUMER CUID IS NUMBER FORMAT, ELSE : java.lang.NumberFormatException: For input string:
+            // MUST CONTROL IF COSTUMER CUID IS NUMBER FORMAT, ELSE :
+            // java.lang.NumberFormatException: For input string:
             gruCustomer = getCustomerByCuid( strCuid );
 
             if ( gruCustomer == null )
@@ -118,7 +127,8 @@ public final class ProvisioningService
     /**
      * Gets the customer by guid.
      *
-     * @param strGuid the str guid
+     * @param strGuid
+     *            the str guid
      * @return the customer by guid
      */
     public static Customer getCustomerByGuid( String strGuid )
@@ -131,7 +141,8 @@ public final class ProvisioningService
     /**
      * Creates the customer by guid.
      *
-     * @param strGuid the str guid
+     * @param strGuid
+     *            the str guid
      * @return the customer
      */
     public static Customer createCustomerByGuid( String strGuid )
@@ -145,8 +156,10 @@ public final class ProvisioningService
     /**
      * Creates the customer by guid.
      *
-     * @param userDto the user dto
-     * @param strGuidFromTicket the str guid from ticket
+     * @param userDto
+     *            the user dto
+     * @param strGuidFromTicket
+     *            the str guid from ticket
      * @return the customer
      */
     public static Customer createCustomerByGuid( UserDTO userDto, String strGuidFromTicket )
@@ -159,7 +172,8 @@ public final class ProvisioningService
     /**
      * Gets the customer by cuid.
      *
-     * @param strCuid the str cuid
+     * @param strCuid
+     *            the str cuid
      * @return the customer by cuid
      */
     public static Customer getCustomerByCuid( String strCuid )
@@ -172,13 +186,15 @@ public final class ProvisioningService
     /**
      * Builds the customer.
      *
-     * @param user the user
-     * @param strUserId the str user id
+     * @param user
+     *            the user
+     * @param strUserId
+     *            the str user id
      * @return the customer
      */
     private static Customer buildCustomer( UserDTO user, String strUserId )
     {
-        fr.paris.lutece.plugins.gru.business.customer.Customer gruCustomer = new fr.paris.lutece.plugins.gru.business.customer.Customer(  );
+        Customer gruCustomer = new Customer(  );
         gruCustomer.setFirstname( setEmptyValueWhenNullValue( user.getFirstname(  ) ) );
         gruCustomer.setLastname( setEmptyValueWhenNullValue( user.getLastname(  ) ) );
         gruCustomer.setEmail( setEmptyValueWhenNullValue( user.getEmail(  ) ) );
@@ -194,7 +210,8 @@ public final class ProvisioningService
     /**
      * Sets the empty value when null value.
      *
-     * @param value the value
+     * @param value
+     *            the value
      * @return the string
      */
     private static String setEmptyValueWhenNullValue( String value )
