@@ -13,12 +13,9 @@
    
  <!-- 
  <bean id="customer-provisioning.userinfoService" class="fr.paris.lutece.plugins.customerprovisioning.modules.openam.services.OpenAmService" />
+ <bean id="customer-provisioning.customerinfoService" class="fr.paris.lutece.plugins.customerprovisioning.modules.identitystore.services.IdentityStoreCustomerInfoService" />
  
-  -->
-    
-    <!-- CUSTOMER INFO SERVICE -->
-    <bean id="customer-provisioning.customerinfoService" class="fr.paris.lutece.plugins.customerprovisioning.services.LocalCustomerInfoService"/>  
-    
-    
+  -->  
+ <bean id="customer-provisioning.customerinfoService" class="fr.paris.lutece.plugins.customerprovisioning.services.MockCustomerInfoService" />
 
 </beans>

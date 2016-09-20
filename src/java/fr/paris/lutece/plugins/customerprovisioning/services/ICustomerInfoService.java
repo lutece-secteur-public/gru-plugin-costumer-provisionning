@@ -33,8 +33,7 @@
  */
 package fr.paris.lutece.plugins.customerprovisioning.services;
 
-import fr.paris.lutece.plugins.gru.business.customer.Customer;
-
+import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 
 /**
  * The Interface ICustomerInfoService.

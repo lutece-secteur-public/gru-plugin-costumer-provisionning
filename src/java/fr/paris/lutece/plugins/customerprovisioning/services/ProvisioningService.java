@@ -34,11 +34,11 @@
 package fr.paris.lutece.plugins.customerprovisioning.services;
 
 import fr.paris.lutece.plugins.customerprovisioning.business.UserDTO;
-import fr.paris.lutece.plugins.gru.business.customer.Customer;
 import fr.paris.lutece.portal.service.util.AppLogService;
 
 import org.apache.commons.lang.StringUtils;
 
+import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 
 /**
  * The Class ProvisioningService.

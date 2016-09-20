@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2015, Mairie de Paris
+ * Copyright (c) 2002-2016, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,22 +33,27 @@
  */
 package fr.paris.lutece.plugins.customerprovisioning.services;
 
-import fr.paris.lutece.plugins.gru.business.customer.Customer;
-import fr.paris.lutece.plugins.gru.business.customer.CustomerHome;
-
+import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 
 /**
  * LocalCustomerService
  */
-public class LocalCustomerInfoService implements ICustomerInfoService
+public class MockCustomerInfoService implements ICustomerInfoService
 {
-    /**
+    private static final String FIRSTNAME = "John";
+    private static final String LASTNAME = "Doe";
+
+	/**
      * {@inheritDoc }
      */
     @Override
     public Customer getCustomerByGuid( String strGid )
     {
-        return CustomerHome.findByGuid( strGid );
+        Customer customer = new Customer();
+        customer.setFirstname( FIRSTNAME );
+        customer.setLastname( LASTNAME );
+        
+    	return customer;
     }
 
     /**
@@ -57,7 +62,11 @@ public class LocalCustomerInfoService implements ICustomerInfoService
     @Override
     public Customer getCustomerByCid( String strCid )
     {
-        return CustomerHome.findByPrimaryKey( Integer.parseInt( strCid ) );
+        Customer customer = new Customer();
+        customer.setFirstname( FIRSTNAME );
+        customer.setLastname( LASTNAME );
+        
+    	return customer;
     }
 
     /**
@@ -66,6 +75,7 @@ public class LocalCustomerInfoService implements ICustomerInfoService
     @Override
     public Customer createCustomer( Customer c )
     {
-        return CustomerHome.create( c );
+      
+    	return c;
     }
 }
